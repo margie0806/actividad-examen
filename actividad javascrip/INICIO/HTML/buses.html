@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Boletos - Buses del Tolima</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .bus-selection, .seat-selection {
+            margin: 20px;
+        }
+        .seat {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        .seat.selected {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="bus-selection">
+        <label for="busType">Seleccione el tipo de bus:</label>
+        <select id="busType">
+            <option value="van">Van (15 personas)</option>
+            <option value="bus">Bus (40 personas)</option>
+            <option value="busGrande">Bus Grande (60 personas)</option>
+        </select>
+        <button onclick="generateSeats()">Generar Asientos</button>
+    </div>
+    <div class="seat-selection">
+        <h2>Seleccione sus asientos:</h2>
+        <div id="seatsContainer"></div>
+    </div>
+    <script src="/INICIO/JS/buses.js"></script>
+</body>
+</html>

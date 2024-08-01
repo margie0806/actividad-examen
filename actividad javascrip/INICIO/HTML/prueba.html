@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Puestos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selecciona el tipo de bus</h1>
+    <form id="busForm">
+        <label for="busType">Tipo de bus:</label>
+        <select id="busType" name="busType">
+            <option value="van">Van (15 personas)</option>
+            <option value="bus">Bus (40 personas)</option>
+            <option value="bus grande">Bus Grande (60 personas)</option>
+        </select>
+        <button type="button" onclick="venderPuestos()">Vender Puestos</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        // Definir las capacidades de los vehículos
+        const buses = [
+            { tipo: 'van', capacidad: 15 },
+            { tipo: 'bus', capacidad: 40 },
+            { tipo: 'bus grande', capacidad: 60 }
+        ];
+
+        function venderPuestos() {
+            // Obtener el tipo de bus seleccionado
+            const tipoBus = document.getElementById('busType').value;
+
+            // Encontrar el bus seleccionado
+            const busSeleccionado = buses.find(bus => bus.tipo === tipoBus);
+
+            if (busSeleccionado) {
+                const capacidad = busSeleccionado.capacidad;
+                let puestosVendidos = 0;
+                let resultado = `<h2>Bus seleccionado: ${tipoBus} con capacidad de ${capacidad} personas</h2>`;
+
+                while (puestosVendidos < capacidad) {
+                    // Agregar la venta de puestos al resultado
+                    resultado += `Vendiendo puesto número ${puestosVendidos + 1}<br>`;
+                    puestosVendidos++;
+                }
+
+                resultado += `Todos los ${puestosVendidos} puestos han sido vendidos.`;
+                document.getElementById('result').innerHTML = resultado;
+            } else {
+                document.getElementById('result').innerHTML = `El tipo de bus "${tipoBus}" no se encuentra disponible.`;
+            }
+        }
+    </script>
+</body>
+</html>
